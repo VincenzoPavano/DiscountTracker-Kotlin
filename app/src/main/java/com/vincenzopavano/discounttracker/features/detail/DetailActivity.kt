@@ -57,7 +57,7 @@ class DetailActivity : BaseActivity(), DetailMvpView, ErrorView.ErrorListener {
 
     override fun showPokemon(pokemon: Pokemon) {
         if (pokemon.sprites.frontDefault != null) {
-            imagePokemon?.loadImageFromUrl(pokemon.sprites.frontDefault as String)
+            //imagePokemon?.loadImageFromUrl(pokemon.sprites.frontDefault as String)
         }
         layoutPokemon?.visible()
     }
