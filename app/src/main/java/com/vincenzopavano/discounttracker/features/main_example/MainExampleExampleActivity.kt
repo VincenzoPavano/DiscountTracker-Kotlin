@@ -1,4 +1,4 @@
-package com.vincenzopavano.discounttracker.features.main
+package com.vincenzopavano.discounttracker.features.main_example
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -13,10 +13,10 @@ import timber.log.Timber
 import javax.inject.Inject
 
 
-class MainActivity : BaseActivity(), MainMvpView, PokemonAdapter.ClickListener, ErrorView.ErrorListener {
+class MainExampleExampleActivity : BaseActivity(), MainExampleMvpView, PokemonAdapter.ClickListener, ErrorView.ErrorListener {
 
     @Inject lateinit var pokemonAdapter: PokemonAdapter
-    @Inject lateinit var mainPresenter: MainPresenter
+    @Inject lateinit var mainExamplePresenter: MainExamplePresenter
 
     companion object {
         private val POKEMON_COUNT = 20
@@ -25,13 +25,13 @@ class MainActivity : BaseActivity(), MainMvpView, PokemonAdapter.ClickListener, 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityComponent().inject(this)
-        mainPresenter.attachView(this)
+        mainExamplePresenter.attachView(this)
 
         setSupportActionBar(main_toolbar)
         swipeToRefresh?.apply {
             setProgressBackgroundColorSchemeResource(R.color.primary)
             setColorSchemeResources(R.color.white)
-            setOnRefreshListener { mainPresenter.getPokemon(POKEMON_COUNT) }
+            setOnRefreshListener { mainExamplePresenter.getPokemon(POKEMON_COUNT) }
         }
 
         pokemonAdapter.setClickListener(this)
@@ -42,14 +42,14 @@ class MainActivity : BaseActivity(), MainMvpView, PokemonAdapter.ClickListener, 
 
         viewError?.setErrorListener(this)
 
-        mainPresenter.getPokemon(POKEMON_COUNT)
+        mainExamplePresenter.getPokemon(POKEMON_COUNT)
     }
 
     override fun layoutId() = R.layout.activity_main
 
     override fun onDestroy() {
         super.onDestroy()
-        mainPresenter.detachView()
+        mainExamplePresenter.detachView()
     }
 
     override fun showPokemon(pokemon: List<String>) {
@@ -91,7 +91,7 @@ class MainActivity : BaseActivity(), MainMvpView, PokemonAdapter.ClickListener, 
     }
 
     override fun onReloadData() {
-        mainPresenter.getPokemon(POKEMON_COUNT)
+        mainExamplePresenter.getPokemon(POKEMON_COUNT)
     }
 
 }

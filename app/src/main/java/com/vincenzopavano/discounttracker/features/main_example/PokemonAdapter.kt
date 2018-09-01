@@ -1,4 +1,4 @@
-package com.vincenzopavano.discounttracker.features.main
+package com.vincenzopavano.discounttracker.features.main_example
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

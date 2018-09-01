@@ -10,7 +10,7 @@ import android.support.test.runner.AndroidJUnit4
 import com.vincenzopavano.discounttracker.common.TestComponentRule
 import com.vincenzopavano.discounttracker.common.TestDataFactory
 import com.vincenzopavano.discounttracker.data.model.Pokemon
-import com.vincenzopavano.discounttracker.features.main.MainActivity
+import com.vincenzopavano.discounttracker.features.main_example.MainExampleExampleActivity
 import com.vincenzopavano.discounttracker.util.ErrorTestUtil
 import io.reactivex.Single
 import org.junit.Rule
@@ -22,10 +22,10 @@ import org.mockito.ArgumentMatchers
 import org.mockito.Mockito.`when`
 
 @RunWith(AndroidJUnit4::class)
-class MainActivityTest {
+class MainExampleActivityTest {
 
     private val component = TestComponentRule(InstrumentationRegistry.getTargetContext())
-    private val main = ActivityTestRule(MainActivity::class.java, false, false)
+    private val main = ActivityTestRule(MainExampleExampleActivity::class.java, false, false)
 
     // TestComponentRule needs to go first to make sure the Dagger ApplicationTestComponent is set
     // in the Application before any Activity is launched.
