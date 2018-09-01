@@ -6,7 +6,6 @@ import android.view.View
 import com.vincenzopavano.discounttracker.R
 import com.vincenzopavano.discounttracker.features.base.BaseActivity
 import com.vincenzopavano.discounttracker.features.common.ErrorView
-import com.vincenzopavano.discounttracker.features.detail.DetailActivity
 import com.vincenzopavano.discounttracker.util.gone
 import com.vincenzopavano.discounttracker.util.visible
 import kotlinx.android.synthetic.main.activity_main.*
@@ -88,7 +87,7 @@ class MainActivity : BaseActivity(), MainMvpView, PokemonAdapter.ClickListener, 
     }
 
     override fun onPokemonClick(pokemon: String) {
-        startActivity(DetailActivity.getStartIntent(this, pokemon))
+        //startActivity(DetailActivity.getStartIntent(this, pokemon))
     }
 
     override fun onReloadData() {
