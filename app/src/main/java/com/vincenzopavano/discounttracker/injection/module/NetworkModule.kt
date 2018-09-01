@@ -24,7 +24,7 @@ import javax.inject.Singleton
 @Module
 class NetworkModule(private val context: Context) {
 
-    protected fun getBaseUrl() = BuildConfig.POKEAPI_API_URL
+    protected fun getBaseUrl() = BuildConfig.DISCOUNT_API_URL
 
     @Provides
     @Singleton

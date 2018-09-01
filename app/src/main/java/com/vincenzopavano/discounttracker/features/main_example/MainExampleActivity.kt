@@ -13,10 +13,12 @@ import timber.log.Timber
 import javax.inject.Inject
 
 
-class MainExampleExampleActivity : BaseActivity(), MainExampleMvpView, PokemonAdapter.ClickListener, ErrorView.ErrorListener {
+class MainExampleActivity : BaseActivity(), MainExampleMvpView, PokemonAdapter.ClickListener, ErrorView.ErrorListener {
 
-    @Inject lateinit var pokemonAdapter: PokemonAdapter
-    @Inject lateinit var mainExamplePresenter: MainExamplePresenter
+    @Inject
+    lateinit var pokemonAdapter: PokemonAdapter
+    @Inject
+    lateinit var mainExamplePresenter: MainExamplePresenter
 
     companion object {
         private val POKEMON_COUNT = 20

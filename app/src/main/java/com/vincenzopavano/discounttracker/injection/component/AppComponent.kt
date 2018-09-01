@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import dagger.Component
 import com.vincenzopavano.discounttracker.data.DataManager
+import com.vincenzopavano.discounttracker.data.remote.DiscountApi
 import com.vincenzopavano.discounttracker.data.remote.PokemonApi
 import com.vincenzopavano.discounttracker.injection.ApplicationContext
 import com.vincenzopavano.discounttracker.injection.module.AppModule
@@ -19,6 +20,8 @@ interface AppComponent {
     fun application(): Application
 
     fun dataManager(): DataManager
+
+    fun discountApi(): DiscountApi
 
     fun pokemonApi(): PokemonApi
 }

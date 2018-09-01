@@ -3,8 +3,8 @@ package com.vincenzopavano.discounttracker
 import com.nhaarman.mockito_kotlin.*
 import com.vincenzopavano.discounttracker.common.TestDataFactory
 import com.vincenzopavano.discounttracker.data.DataManager
-import com.vincenzopavano.discounttracker.features.main_example.MainExampleMvpView
-import com.vincenzopavano.discounttracker.features.main_example.MainExamplePresenter
+import com.vincenzopavano.discounttracker.features.main_example.MainMvpView
+import com.vincenzopavano.discounttracker.features.main_example.MainPresenter
 import com.vincenzopavano.discounttracker.util.RxSchedulersOverrideRule
 import io.reactivex.Single
 import org.junit.After
@@ -19,16 +19,16 @@ import org.mockito.junit.MockitoJUnitRunner
  * Created by ravindra on 24/12/16.
  */
 @RunWith(MockitoJUnitRunner::class)
-class MainExamplePresenterTest {
+class MainPresenterTest {
 
     val pokemonList = TestDataFactory.makePokemonNamesList(10)
 
-    val mockMainExampleMvpView: MainExampleMvpView = mock()
+    val mockMainMvpView: MainMvpView = mock()
     val mockDataManager: DataManager = mock {
         on { getPokemonList(10) } doReturn Single.just(pokemonList)
         on { getPokemonList(5) } doReturn Single.error<List<String>>(RuntimeException())
     }
-    private var mainExamplePresenter: MainExamplePresenter? = null
+    private var mainPresenter: MainPresenter? = null
 
     @JvmField
     @Rule
@@ -36,24 +36,24 @@ class MainExamplePresenterTest {
 
     @Before
     fun setUp() {
-        mainExamplePresenter = MainExamplePresenter(mockDataManager)
-        mainExamplePresenter?.attachView(mockMainExampleMvpView)
+        mainPresenter = MainExamplePresenter(mockDataManager)
+        mainPresenter?.attachView(mockMainMvpView)
     }
 
     @After
     fun tearDown() {
-        mainExamplePresenter?.detachView()
+        mainPresenter?.detachView()
     }
 
     @Test
     @Throws(Exception::class)
     fun getPokemonReturnsPokemonNames() {
 
-        mainExamplePresenter?.getPokemon(10)
+        mainPresenter?.getPokemon(10)
 
-        verify(mockMainExampleMvpView, times(2)).showProgress(anyBoolean())
-        verify(mockMainExampleMvpView).showPokemon(pokemonList)
-        verify(mockMainExampleMvpView, never()).showError(RuntimeException())
+        verify(mockMainMvpView, times(2)).showProgress(anyBoolean())
+        verify(mockMainMvpView).showPokemon(pokemonList)
+        verify(mockMainMvpView, never()).showError(RuntimeException())
 
     }
 
@@ -61,10 +61,10 @@ class MainExamplePresenterTest {
     @Throws(Exception::class)
     fun getPokemonReturnsError() {
 
-        mainExamplePresenter?.getPokemon(5)
+        mainPresenter?.getPokemon(5)
 
-        verify(mockMainExampleMvpView, times(2)).showProgress(anyBoolean())
-        verify(mockMainExampleMvpView).showError(any())
-        verify(mockMainExampleMvpView, never()).showPokemon(any())
+        verify(mockMainMvpView, times(2)).showProgress(anyBoolean())
+        verify(mockMainMvpView).showError(any())
+        verify(mockMainMvpView, never()).showPokemon(any())
     }
 }
