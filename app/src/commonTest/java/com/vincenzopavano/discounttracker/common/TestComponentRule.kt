@@ -1,6 +1,6 @@
 package com.vincenzopavano.discounttracker.common
 
-import com.vincenzopavano.discounttracker.MvpStarterApplication
+import com.vincenzopavano.discounttracker.DiscountTracker
 import com.vincenzopavano.discounttracker.common.injection.component.DaggerTestComponent
 import com.vincenzopavano.discounttracker.common.injection.component.TestComponent
 import com.vincenzopavano.discounttracker.common.injection.module.ApplicationTestModule
@@ -22,7 +22,7 @@ class TestComponentRule(val context: Context) : TestRule {
     val testComponent: TestComponent
 
     init {
-        val application = MvpStarterApplication.get(context)
+        val application = DiscountTracker.get(context)
         testComponent = DaggerTestComponent.builder()
                 .applicationTestModule(ApplicationTestModule(application))
                 .build()
@@ -35,7 +35,7 @@ class TestComponentRule(val context: Context) : TestRule {
         return object : Statement() {
             @Throws(Throwable::class)
             override fun evaluate() {
-                val application = MvpStarterApplication.get(context)
+                val application = DiscountTracker.get(context)
                 application.component = testComponent
                 base.evaluate()
             }

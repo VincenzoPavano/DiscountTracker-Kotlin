@@ -8,7 +8,7 @@ import com.vincenzopavano.discounttracker.features.base.BaseActivity
 import com.vincenzopavano.discounttracker.features.common.ErrorView
 import com.vincenzopavano.discounttracker.util.gone
 import com.vincenzopavano.discounttracker.util.visible
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_mainexample.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -45,7 +45,7 @@ class MainExampleExampleActivity : BaseActivity(), MainExampleMvpView, PokemonAd
         mainExamplePresenter.getPokemon(POKEMON_COUNT)
     }
 
-    override fun layoutId() = R.layout.activity_main
+    override fun layoutId() = R.layout.activity_mainexample
 
     override fun onDestroy() {
         super.onDestroy()

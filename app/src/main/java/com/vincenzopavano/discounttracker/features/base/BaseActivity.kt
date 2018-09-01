@@ -6,7 +6,7 @@ import android.support.v4.util.LongSparseArray
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import butterknife.ButterKnife
-import com.vincenzopavano.discounttracker.MvpStarterApplication
+import com.vincenzopavano.discounttracker.DiscountTracker
 import com.vincenzopavano.discounttracker.injection.component.ActivityComponent
 import com.vincenzopavano.discounttracker.injection.component.ConfigPersistentComponent
 import com.vincenzopavano.discounttracker.injection.component.DaggerConfigPersistentComponent
@@ -45,7 +45,7 @@ abstract class BaseActivity : AppCompatActivity() {
         if (componentsArray.get(activityId) == null) {
             Timber.i("Creating new ConfigPersistentComponent id=%d", activityId)
             configPersistentComponent = DaggerConfigPersistentComponent.builder()
-                    .appComponent(MvpStarterApplication[this].component)
+                    .appComponent(DiscountTracker[this].component)
                     .build()
             componentsArray.put(activityId, configPersistentComponent)
         } else {

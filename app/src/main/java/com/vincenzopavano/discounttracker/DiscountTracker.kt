@@ -12,13 +12,13 @@ import com.vincenzopavano.discounttracker.injection.module.AppModule
 import com.vincenzopavano.discounttracker.injection.module.NetworkModule
 import timber.log.Timber
 
-class MvpStarterApplication : MultiDexApplication() {
+class DiscountTracker : MultiDexApplication() {
 
     private var appComponent: AppComponent? = null
 
     companion object {
-        operator fun get(context: Context): MvpStarterApplication {
-            return context.applicationContext as MvpStarterApplication
+        operator fun get(context: Context): DiscountTracker {
+            return context.applicationContext as DiscountTracker
         }
     }
 

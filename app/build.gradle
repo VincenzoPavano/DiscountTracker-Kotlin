@@ -112,13 +112,14 @@ dependencies {
     implementation rxJavaLibs
     implementation otherLibs
 
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     debugImplementation debugLibs
     releaseImplementation releaseLibs
 
     implementation(glideOkhttp) {
         exclude group: 'glide-parent'
     }
-    
+
     debugImplementation(sherlock) {
         transitive = true
     }
