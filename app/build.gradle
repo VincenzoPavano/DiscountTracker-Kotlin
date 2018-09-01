@@ -3,6 +3,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.github.ben-manes.versions'
+apply from: "findbugs.gradle"
+apply from: "checkstyle.gradle"
+apply from: "pmd.gradle"
 //apply plugin: 'io.fabric'
 
 android {
