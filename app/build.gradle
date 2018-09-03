@@ -3,14 +3,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.github.ben-manes.versions'
-apply from: "findbugs.gradle"
-apply from: "checkstyle.gradle"
-apply from: "pmd.gradle"
-//apply plugin: 'io.fabric'
+apply from: "quality.gradle"
 
 android {
     compileSdkVersion 28
-    buildToolsVersion '28.0.0'
+    buildToolsVersion '28.0.2'
 
     dexOptions {
         maxProcessCount 4
@@ -58,7 +55,7 @@ android {
         showAll true
         explainIssues true
         abortOnError false
-        lintConfig file("$projectDir/lint.xml")
+        lintConfig file("${project.rootDir}/rules/lint.xml")
     }
 
     packagingOptions {
