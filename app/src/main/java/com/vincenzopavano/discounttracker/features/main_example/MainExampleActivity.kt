@@ -30,7 +30,7 @@ class MainExampleActivity : BaseActivity(), MainExampleMvpView, PokemonAdapter.C
         mainExamplePresenter.attachView(this)
 
         setSupportActionBar(main_toolbar)
-        swipeToRefresh?.apply {
+        swipeToRefresh_?.apply {
             setProgressBackgroundColorSchemeResource(R.color.primary)
             setColorSchemeResources(R.color.white)
             setOnRefreshListener { mainExamplePresenter.getPokemon(POKEMON_COUNT) }
@@ -61,29 +61,29 @@ class MainExampleActivity : BaseActivity(), MainExampleMvpView, PokemonAdapter.C
         }
 
         recyclerPokemon?.visible()
-        swipeToRefresh?.visible()
+        swipeToRefresh_?.visible()
     }
 
     override fun showProgress(show: Boolean) {
         if (show) {
             if (recyclerPokemon?.visibility == View.VISIBLE && pokemonAdapter.itemCount > 0) {
-                swipeToRefresh?.isRefreshing = true
+                swipeToRefresh_?.isRefreshing = true
             } else {
                 progressBar?.visible()
                 recyclerPokemon?.gone()
-                swipeToRefresh?.gone()
+                swipeToRefresh_?.gone()
             }
 
             viewError?.gone()
         } else {
-            swipeToRefresh?.isRefreshing = false
+            swipeToRefresh_?.isRefreshing = false
             progressBar?.gone()
         }
     }
 
     override fun showError(error: Throwable) {
         recyclerPokemon?.gone()
-        swipeToRefresh?.gone()
+        swipeToRefresh_?.gone()
         viewError?.visible()
         Timber.e(error, "There was an error retrieving the pokemon")
     }
