@@ -31,15 +31,14 @@ class MainActivity : BaseActivity(), MainMvpView, MainAdapter.ClickListener {
         }
 
         // RecyclerView and adapter
-        mainAdapter.clickListener = this
+        mainAdapter.setClickListener(this)
         recyclerDiscount?.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = mainAdapter
         }
 
         // Call presenter to get initial list
-        //mainPresenter.getDiscount()
-        mainAdapter.set
+        mainPresenter.getDiscount()
     }
 
     override fun layoutId() = R.layout.activity_main

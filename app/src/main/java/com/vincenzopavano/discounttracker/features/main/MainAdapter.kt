@@ -11,13 +11,15 @@ class MainAdapter @Inject
 constructor() : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     private var discountsList: List<Discount> = emptyList<Discount>()
-        set(discountsList) {
-            this.discountsList = discountsList
-        }
-    var clickListener: ClickListener? = null
-        set(clickListener) {
-            this.clickListener = clickListener
-        }
+    private var clickListener: ClickListener? = null
+
+    fun setDiscountsList(discounts: List<Discount>) {
+        discountsList = discounts
+    }
+
+    fun setClickListener(clickListener: ClickListener) {
+        this.clickListener = clickListener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val textView = LayoutInflater.from(parent.context)
