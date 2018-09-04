@@ -1,0 +1,57 @@
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+
+def configDir = "${project.rootDir}/quality"
+def reportsDir = "${project.buildDir}/outputs"
+
+task checkstyle(type: Checkstyle) {
+    description 'Check code standard'
+    group 'verification'
+
+    configFile file("$configDir/checkstyle.xml")
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    classpath = files()
+    ignoreFailures = false
+}
+
+task findbugs(type: FindBugs, dependsOn: "assembleDebug") {
+    description 'Find bugs mainly design flaws, bad practices, multithreaded correctness and code vulnerabilities.'
+    group 'verification'
+    excludeFilter = file("$configDir/findbugs.xml")
+    classes = fileTree("$project.buildDir/intermediates/classes/debug/com/vincenzopavano")
+    source = fileTree('src/main/java')
+    effort 'max'
+    reportLevel = "high"
+    classpath = files()
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        html.destination = "$project.reportsDir/findbugs.html"
+    }
+}
+
+task pmd(type: Pmd) {
+    ignoreFailures = false
+    ruleSetFiles = files("$configDir/pmd/pmd-ruleset.xml")
+    ruleSets = []
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+//        xml {
+//            destination "$reportsDir/pmd/pmd.xml"
+//        }
+//        html {
+//            destination "$reportsDir/pmd/pmd.html"
+//        }
+    }
+}

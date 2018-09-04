@@ -3,14 +3,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.github.ben-manes.versions'
-apply from: "findbugs.gradle"
-apply from: "checkstyle.gradle"
-apply from: "pmd.gradle"
-//apply plugin: 'io.fabric'
+apply from: "quality.gradle"
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.2'
 
     dexOptions {
         maxProcessCount 4
@@ -20,15 +17,14 @@ android {
 
     defaultConfig {
         applicationId "com.vincenzopavano.discounttracker"
-        minSdkVersion 19
-        targetSdkVersion 27
+        minSdkVersion 21
+        targetSdkVersion 28
         testInstrumentationRunner "${applicationId}.runner.RxAndroidJUnitRunner"
         versionCode 1000
         // Major -> Millions, Minor -> Thousands, Bugfix -> Hundreds. E.g 1.3.72 == 1,003,072
         versionName '0.1.0'
 
-        buildConfigField("String", "POKEAPI_API_URL",
-                "\"${PokeapiApiUrl}\"")
+        buildConfigField("String", "DISCOUNT_API_URL", "\"${DiscountApiUrl}\"")
 
         multiDexEnabled true
     }
@@ -59,7 +55,7 @@ android {
         showAll true
         explainIssues true
         abortOnError false
-        lintConfig file("$projectDir/lint.xml")
+        lintConfig file("${project.rootDir}/rules/lint.xml")
     }
 
     packagingOptions {
@@ -112,13 +108,14 @@ dependencies {
     implementation rxJavaLibs
     implementation otherLibs
 
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     debugImplementation debugLibs
     releaseImplementation releaseLibs
 
     implementation(glideOkhttp) {
         exclude group: 'glide-parent'
     }
-    
+
     debugImplementation(sherlock) {
         transitive = true
     }

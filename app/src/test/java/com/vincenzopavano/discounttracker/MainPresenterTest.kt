@@ -3,8 +3,8 @@ package com.vincenzopavano.discounttracker
 import com.nhaarman.mockito_kotlin.*
 import com.vincenzopavano.discounttracker.common.TestDataFactory
 import com.vincenzopavano.discounttracker.data.DataManager
-import com.vincenzopavano.discounttracker.features.main.MainMvpView
-import com.vincenzopavano.discounttracker.features.main.MainPresenter
+import com.vincenzopavano.discounttracker.features.main_example.MainMvpView
+import com.vincenzopavano.discounttracker.features.main_example.MainPresenter
 import com.vincenzopavano.discounttracker.util.RxSchedulersOverrideRule
 import io.reactivex.Single
 import org.junit.After
@@ -36,7 +36,7 @@ class MainPresenterTest {
 
     @Before
     fun setUp() {
-        mainPresenter = MainPresenter(mockDataManager)
+        mainPresenter = MainExamplePresenter(mockDataManager)
         mainPresenter?.attachView(mockMainMvpView)
     }
 

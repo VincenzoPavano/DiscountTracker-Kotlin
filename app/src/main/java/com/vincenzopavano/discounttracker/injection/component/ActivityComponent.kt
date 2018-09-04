@@ -1,10 +1,10 @@
 package com.vincenzopavano.discounttracker.injection.component
 
+import com.vincenzopavano.discounttracker.features.base.BaseActivity
+import com.vincenzopavano.discounttracker.features.main.MainActivity
+import com.vincenzopavano.discounttracker.features.main_example.MainExampleActivity
 import com.vincenzopavano.discounttracker.injection.PerActivity
 import com.vincenzopavano.discounttracker.injection.module.ActivityModule
-import com.vincenzopavano.discounttracker.features.base.BaseActivity
-import com.vincenzopavano.discounttracker.features.detail.DetailActivity
-import com.vincenzopavano.discounttracker.features.main.MainActivity
 import dagger.Subcomponent
 
 @PerActivity
@@ -14,5 +14,5 @@ interface ActivityComponent {
 
     fun inject(mainActivity: MainActivity)
 
-    fun inject(detailActivity: DetailActivity)
+    fun inject(mainActivityExample: MainExampleActivity)
 }
