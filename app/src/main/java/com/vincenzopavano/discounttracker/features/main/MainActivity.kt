@@ -27,6 +27,7 @@ class MainActivity : BaseActivity(), MainMvpView, MainAdapter.ClickListener {
             setColorSchemeResources(R.color.white)
             setOnRefreshListener {
                 // Call presenter to get discount list
+                mainPresenter.getDiscount()
             }
         }
 
