@@ -52,7 +52,10 @@ class MainActivity : BaseActivity(), MainMvpView, MainAdapter.ClickListener {
     }
 
     override fun showDiscount(discounts: List<Discount>) {
-        
+        mainAdapter.apply {
+            setDiscountsList(discounts)
+            notifyDataSetChanged()
+        }
     }
 
     override fun showProgress(show: Boolean) {
