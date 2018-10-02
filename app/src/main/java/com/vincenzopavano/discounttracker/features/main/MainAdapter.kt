@@ -33,7 +33,7 @@ constructor() : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val discount = discountsList[position]
-        holder.textView.setText(discount.company)
+        holder.textView.setText(discount.Company)
     }
 
     interface ClickListener {

@@ -30,4 +30,3 @@ constructor(private val dataManager: DataManager) : BasePresenter<MainMvpView>()
 
     }
 }
-}

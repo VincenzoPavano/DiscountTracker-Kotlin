@@ -6,10 +6,12 @@ import com.vincenzopavano.discounttracker.R
 import com.vincenzopavano.discounttracker.data.model.Discount
 import com.vincenzopavano.discounttracker.features.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 import javax.inject.Inject
 
 
 class MainActivity : BaseActivity(), MainMvpView, MainAdapter.ClickListener {
+
     @Inject
     lateinit var mainPresenter: MainPresenter
 
@@ -49,12 +51,16 @@ class MainActivity : BaseActivity(), MainMvpView, MainAdapter.ClickListener {
         mainPresenter.detachView()
     }
 
+    override fun showDiscount(discounts: List<Discount>) {
+        
+    }
+
     override fun showProgress(show: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Timber.d("Show progress")
     }
 
     override fun showError(error: Throwable) {
-
+        Timber.d("Show error")
     }
 
     override fun onDiscountClick(discount: Discount) {

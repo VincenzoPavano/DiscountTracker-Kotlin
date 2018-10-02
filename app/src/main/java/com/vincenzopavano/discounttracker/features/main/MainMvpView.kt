@@ -5,7 +5,7 @@ import com.vincenzopavano.discounttracker.features.base.MvpView
 
 interface MainMvpView : MvpView {
 
-    fun showDiscount(discounts: Discount)
+    fun showDiscount(discounts: List<Discount>)
 
     fun showProgress(show: Boolean)
 
